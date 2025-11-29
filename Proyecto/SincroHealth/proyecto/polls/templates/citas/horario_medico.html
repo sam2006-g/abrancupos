@@ -1,0 +1,27 @@
+<h2>Horario de {{ medico.nombre }} {{ medico.apellidos }}</h2>
+
+{% for fecha, citas in dias.items %}
+    <h3>{{ fecha|date:"l d-m-Y" }}</h3>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Hora</th>
+            <th>Paciente</th>
+            <th>Estado</th>
+        </tr>
+
+        {% for cita in citas %}
+        <tr>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.idpaciente.nombre }} {{ cita.idpaciente.apellidos }}</td>
+            <td>{{ cita.estado_cita }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No hay citas</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+{% endfor %}

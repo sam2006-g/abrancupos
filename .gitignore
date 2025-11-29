@@ -11,6 +11,11 @@
 *.sln.docstates
 *.env
 
+cp .env.env
+Proyecto/proyecto_eps
+*.log
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

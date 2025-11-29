@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citas del Paciente</title>
+</head>
+<body>
+
+<h1>Lista de Citas</h1>
+
+<ul>
+    {% for cita in citas %}
+        <li>
+            {{ cita.fecha }} - {{ cita.hora }} - {{ cita.especialidad }} - {{ cita.estado_cita }}
+        </li>
+    {% empty %}
+        <li>No hay citas registradas.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

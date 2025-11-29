@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página del Sujeto</title>
+</head>
+<body>
+    <h1>Página del Sujeto</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Crear Sujeto</button>
+    </form>
+
+    {% if frase %}
+        <h2>El sujeto dice: "{{ frase }}"</h2>
+    {% endif %}
+</body>
+</html>

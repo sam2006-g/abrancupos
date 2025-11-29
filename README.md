@@ -11,7 +11,7 @@ La plataforma también incluye un calendario integrado que muestra a los médico
 # ⭐ Integrantes ⭐
 ✨ SALAZAR CARVAJAL OMAR ALEJANDRO - osalazarc@unal.edu.co
 
-✨ PAJARO SANCHEZ NICOLAS - pongasucorreo@unal.edu.co 
+✨ PAJARO SANCHEZ NICOLAS - npajaro@unal.edu.co 
 
 ✨ DIAZ ACOSTA NATHALIA MILENA - ndiazac@unal.edu.co  
 
