@@ -15,7 +15,7 @@ La plataforma también incluye un calendario integrado que muestra a los médico
 
 ✨ DIAZ ACOSTA NATHALIA MILENA - ndiazac@unal.edu.co  
 
-✨ CAMARGO BARRERA SAMUEL FRANCISCO - pongasucorreo@unal.edu.co
+✨ CAMARGO BARRERA SAMUEL FRANCISCO - sacamargob@unal.edu.co
 
 # ⚡ Logo ⚡
 <a href="https://ibb.co/JWtLFswv">
