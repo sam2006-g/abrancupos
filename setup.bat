@@ -30,7 +30,6 @@ pip install django
 
 REM 5.1) Instalar dependencias adicionales
 echo Instalando dependencias adicionales...
-pip install django-crontab
 pip install twilio
 
 REM 6) Migraciones de base de datos
