@@ -1,41 +1,51 @@
 from datetime import date, timedelta
-from django.core.mail import send_mail
-from django.conf import settings
 from polls.models import CitaMedica
-
+from polls.sms import enviar_sms
+from polls.email_utils import enviar_correo
 
 def enviar_notificaciones():
     hoy = date.today()
 
-    dias_alertas = {
-        7: "Falta 1 semana",
-        3: "Faltan 3 días",
-        1: "Falta 1 día",
-        0: "preparate hoy"     
+    recordatorios = {
+        "dentro de 1 semana": hoy + timedelta(days=7),
+        "dentro de 3 días": hoy + timedelta(days=3),
+        "el día de mañana": hoy + timedelta(days=1),
+        "el día de hoy": hoy,
     }
 
-    for dias, mensaje_alerta in dias_alertas.items():
-        fecha_objetivo = hoy + timedelta(days=dias)
+    for tipo, fecha_objetivo in recordatorios.items():
+        print(f"\n Buscando citas para {tipo} ({fecha_objetivo})...")
+
         citas = CitaMedica.objects.filter(fecha=fecha_objetivo)
 
         for cita in citas:
             paciente = cita.idpaciente
-
-            mensaje = (
+            telefono = f"+57{paciente.telefono}"  
+            
+            mensaje_email = (
                 f"Hola {paciente.nombre},\n\n"
-                f"{mensaje_alerta} para tu cita médica.\n"
+                f"Este es un recordatorio: tienes una cita médica "
+                f"{tipo}.\n\n"
                 f"Fecha: {cita.fecha}\n"
                 f"Hora: {cita.hora}\n"
-                f"Especialidad: {cita.especialidad}\n\n"
-                "Te esperamos."
+                f"Médico: {cita.idmedico}\n\n"
+                "SincroHealth"
             )
 
-            send_mail(
-                subject=f"Recordatorio de cita — {mensaje_alerta}",
-                message=mensaje,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[paciente.correo_electronico],
-                fail_silently=False,
+            enviar_correo(
+                destinatario=paciente.correo_electronico,
+                asunto="Recordatorio de cita médica",
+                mensaje=mensaje_email
             )
 
-            print(f"Correo ({mensaje_alerta}) enviado a: {paciente.correo_electronico}")
+            mensaje_sms = (
+                f"Recordatorio SincroHealth: cita {tipo}. "
+                f"{cita.fecha} a las {cita.hora}."
+            )
+
+            enviar_sms(
+                numero_destino=telefono,
+                mensaje=mensaje_sms
+            )
+
+            print(f"Notificación enviada a {paciente.nombre} ({tipo})")
