@@ -121,4 +121,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'sincrohealth@localhost'
+
+TWILIO_ACCOUNT_SID = "ACc919d2417634cd73bccb03479ec678bb"
+TWILIO_AUTH_TOKEN = "cc41d84a69dd1b452225c7f005667b4b"
+TWILIO_PHONE_NUMBER = "+1 267 323 1768"
 
